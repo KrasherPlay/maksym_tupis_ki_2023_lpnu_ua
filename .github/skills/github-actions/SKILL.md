@@ -33,9 +33,9 @@ user-invocable: true
 1. Перевірити наявні workflows, `pom.xml`, wrapper scripts (`mvnw`, `mvnw.cmd`) і supported Java versions.
 2. Визначити trigger-и та мінімальні permissions; для CI за замовчуванням використовувати `contents: read`.
 3. Створити job з matrix `os: [ubuntu-latest, windows-latest, macos-latest]` і заданою Java version.
-4. Використати `actions/checkout` та `actions/setup-java` з однаковою distribution/version на всіх OS.
+4. Використати `actions/checkout` та `actions/setup-java@v5` з однаковою distribution/version на всіх OS.
 5. Налаштувати Maven cache через `setup-java` або узгоджений repository pattern.
-6. Запускати wrapper кросплатформено: `./mvnw -B -ntp verify` на Unix і `.\mvnw.cmd -B -ntp verify` на Windows; не покладатися на shell-specific синтаксис в одному кроці.
+6. Перед запуском на Linux/macOS виконати `chmod +x mvnw`, потім запускати `./mvnw -B -ntp verify`; на Windows використовувати `.\mvnw.cmd -B -ntp verify`. Не покладатися на shell-specific синтаксис в одному кроці.
 7. Не використовувати `-DskipTests`; переконатися, що JUnit 5 discovery і Surefire працюють у всіх трьох OS.
 8. Додати upload test reports/artifacts лише за потреби та з `if: always()` так, щоб failure не став success.
 9. Перевірити YAML syntax, action versions, matrix expression і runner-specific shell paths.
@@ -44,7 +44,7 @@ user-invocable: true
 ## Обробка помилок
 
 - Якщо workflow не парситься, спочатку виправ YAML indentation, quoting, expressions і mapping types.
-- Якщо Windows не знаходить wrapper, перевір executable bit для Unix і використання `mvnw.cmd` для Windows; не видаляй wrapper.
+- Якщо Linux/macOS не можуть виконати wrapper, перевір крок `chmod +x mvnw`; якщо Windows не знаходить wrapper, перевір використання `.\mvnw.cmd`; не видаляй wrapper.
 - Якщо macOS/Linux/Windows дають різні failures, порівняй Java version, shell, path separator, line endings і file permissions.
 - Якщо cache corrupt або спричиняє помилку, очисть/зміни cache key, але не приховуй build failure через `continue-on-error`.
 - Якщо GitHub Actions quota, network або external service недоступні, познач failure як infrastructure-related і повтори лише контрольовано.
