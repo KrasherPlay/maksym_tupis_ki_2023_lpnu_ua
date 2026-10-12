@@ -20,9 +20,9 @@ Configure the Maven build for `${input:projectRoot}`.
 1. Inspect parent/BOM, properties, dependencies, profiles, compiler configuration, Surefire/Failsafe, and Maven wrapper.
 2. Make the smallest `pom.xml` changes needed for Java compilation and JUnit 5 discovery.
 3. Preserve dependency versions and repository settings unless the requested build requires a documented change.
-4. Run `${input:mavenGoal}` with batch/non-interactive flags, preferring `mvnw` or `mvnw.cmd`.
+4. Run `${input:mavenGoal}` with batch/non-interactive flags through `.\mvnw.cmd` on Windows or `./mvnw` on Unix-like systems; do not require system Maven.
 5. If the goal is successful, inspect test reports and generated artifacts under `target/`.
-6. Run `mvn verify` when the requested goal is only `test` and verification is relevant.
+6. Run `.\mvnw.cmd verify` on Windows or `./mvnw verify` on Unix-like systems when the requested goal is only `test` and verification is relevant.
 
 ## Success criteria
 
@@ -34,4 +34,3 @@ Configure the Maven build for `${input:projectRoot}`.
 ## Failure handling
 
 Stop on compilation, dependency resolution, test discovery, or test assertion failure. Report the first root-cause error, command, and affected file; do not weaken the build to force success.
-

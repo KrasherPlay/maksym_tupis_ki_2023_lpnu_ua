@@ -24,8 +24,8 @@ Maintain a reliable, reproducible, and diagnosable Maven build. Prefer small, ta
 ## Working rules
 
 1. Read the relevant project files and existing build conventions before editing.
-2. Use Maven commands appropriate to the repository, such as `mvn test`, `mvn verify`, or a focused module/profile command.
-3. Preserve the project's Maven wrapper and configured versions when they exist; prefer `mvnw`/`mvnw.cmd` over a system Maven installation.
+2. Use Maven commands appropriate to the repository, such as `.\mvnw.cmd test`, `.\mvnw.cmd verify`, or a focused module/profile command on Windows.
+3. Preserve the project's Maven wrapper and configured versions; use `.\mvnw.cmd` on Windows and `./mvnw` on Unix-like systems. Do not require a system Maven installation when the wrapper is present.
 4. Do not hide failures with broad exclusions, skipped tests, ignored errors, or silent fallbacks.
 5. Keep changes minimal, explain non-obvious build changes, and avoid unrelated refactoring.
 6. Never expose credentials, tokens, private keys, connection strings, or other sensitive values in output, logs, files, or commits.

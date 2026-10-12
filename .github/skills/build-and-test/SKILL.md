@@ -33,9 +33,9 @@ user-invocable: true
 2. Перевірити Java/Maven версії та існуючі plugin management settings.
 3. Внести мінімальну зміну: dependency, version, plugin configuration або test fixture; не приховувати помилку через `skipTests`.
 4. Переконатися, що JUnit 5 використовує `org.junit.jupiter` imports і test engine доступний у test runtime.
-5. Запустити швидку перевірку: `mvn -B -ntp test` або `mvnw.cmd -B -ntp test`.
+5. Запустити швидку перевірку через wrapper: `.\mvnw.cmd -B -ntp test` у Windows або `./mvnw -B -ntp test` у Unix-like середовищі.
 6. Для конкретного тесту використати `-Dtest=ClassName#methodName`; для integration tests не підміняти `verify` командою `test`.
-7. Якщо unit tests проходять, запустити `mvn -B -ntp verify` і за потреби `mvn -B -ntp package`.
+7. Якщо unit tests проходять, запустити `.\mvnw.cmd -B -ntp verify` у Windows або `./mvnw -B -ntp verify` у Unix-like середовищі, і за потреби аналогічний `package`.
 8. Перевірити, що артефакт зібраний у `target/`, а звіт тестів доступний у `target/surefire-reports/`.
 9. Для multi-module build перевірити і модуль, і кореневий reactor build.
 10. Повторно виконати найменшу команду, яка відтворювала помилку, та описати різницю до/після.

@@ -10,7 +10,7 @@
 ## Передумови
 
 - Visual Studio Code з GitHub Copilot та підтримкою workspace prompt/skill files;
-- встановлені Java і Maven або Maven Wrapper (`mvnw` / `mvnw.cmd`);
+- встановлена Java; Maven Wrapper (`mvnw` / `mvnw.cmd`) завантажує Maven 3.9.6 автоматично;
 - доступ до Maven repositories для завантаження залежностей;
 - відкритий у VS Code корінь цього проєкту.
 
@@ -64,12 +64,12 @@ git-init
 Мінімальні локальні команди:
 
 ```powershell
-mvn -B -ntp validate
-mvn -B -ntp test
-mvn -B -ntp verify
+.\mvnw.cmd -B -ntp validate
+.\mvnw.cmd -B -ntp test
+.\mvnw.cmd -B -ntp verify
 ```
 
-Якщо в проєкті є Maven Wrapper, використовуйте `.\mvnw.cmd` у Windows:
+У Windows використовуйте `.\mvnw.cmd`; системний `mvn` не потрібен:
 
 ```powershell
 .\mvnw.cmd -B -ntp validate
@@ -95,4 +95,3 @@ mvn -B -ntp verify
 - виконувати force push або переписувати Git-історію.
 
 Детальна схема компонентів і передачі даних описана в [`docs/architecture.md`](./docs/architecture.md).
-

@@ -22,7 +22,7 @@ Create or complete the Java/Maven project at `${input:projectRoot}` using the `p
 3. Establish `src/main/java`, `src/main/resources`, `src/test/java`, and `src/test/resources` for the selected module.
 4. Ensure package paths match `${input:basePackage}` and add only the requested minimal entry point or smoke test.
 5. Configure the requested Java version and JUnit 5 without unrelated dependency upgrades.
-6. Run `mvn validate` or the project Maven wrapper equivalent, then run a focused test check if a test exists.
+6. Run `.\mvnw.cmd validate` on Windows or `./mvnw validate` on Unix-like systems, then run a focused test check if a test exists.
 
 ## Success criteria
 
@@ -34,4 +34,3 @@ Create or complete the Java/Maven project at `${input:projectRoot}` using the `p
 ## Failure handling
 
 On an invalid `pom.xml`, package/version conflict, or validation failure, stop and report the first actionable error. Do not proceed to build configuration.
-
