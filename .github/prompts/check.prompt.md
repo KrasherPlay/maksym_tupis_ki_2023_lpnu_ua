@@ -12,7 +12,7 @@ Perform final verification for `${input:projectRoot}`.
 
 1. Inspect `git status --short` and list the files changed by this workflow.
 2. Verify expected Maven paths, `pom.xml`, JUnit 5 test sources, Maven wrapper, and `.github/workflows`.
-3. Run `mvn validate` and `${input:mavenGoal}` using the wrapper when available.
+3. Run `.\mvnw.cmd validate` and `.\mvnw.cmd ${input:mavenGoal}` on Windows, or the equivalent `./mvnw` commands on Unix-like systems. The wrapper is required.
 4. Confirm test reports exist and tests were not skipped.
 5. Review GitHub Actions YAML for Windows, Linux, and macOS matrix entries, correct wrapper commands, minimal permissions, and absence of secrets.
 6. Report a PASS only if every check succeeds.
@@ -26,4 +26,3 @@ Perform final verification for `${input:projectRoot}`.
 ## Failure handling
 
 On the first failed check, stop the verification sequence, report the exact failure and remediation, and return `FAIL`. Do not claim success based on partial checks.
-

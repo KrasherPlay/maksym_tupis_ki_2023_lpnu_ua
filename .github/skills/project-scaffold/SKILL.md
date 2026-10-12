@@ -39,8 +39,8 @@ user-invocable: true
 5. Додати JUnit Jupiter API/Engine через `org.junit.jupiter:junit-jupiter` або наявну dependency-management схему.
 6. Налаштувати Surefire сумісно з JUnit 5, якщо поточна версія Maven/Surefire цього потребує.
 7. Перевірити, що package declaration відповідає шляху файлу, а test package відповідає production package.
-8. Запустити `mvn test` або `mvnw.cmd test` на Windows; для multi-module проєкту використати reactor-команду з кореня.
-9. Перевірити `mvn validate`/`mvnw.cmd validate` і за потреби `mvn package` без пропуску тестів.
+8. Запустити `.\mvnw.cmd test` на Windows або `./mvnw test` на Unix-like системі; для multi-module проєкту використати reactor-команду з кореня.
+9. Перевірити `.\mvnw.cmd validate` або `./mvnw validate` і за потреби відповідний `package` без пропуску тестів.
 10. Зафіксувати результат, включно з відомими pre-existing failures.
 
 ## Обробка помилок
